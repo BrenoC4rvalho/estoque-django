@@ -1,11 +1,38 @@
 {% extends 'base.html' %}
+
 {% block product %}
-
-    <p>Alterar produto</p>
-    <form action="{% url 'produto:update_produto' pk %}" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Salvar</button>
-    </form>
-
+<section class="section">
+    <div class="container">
+        <h1 class="title">Atualizar Produto</h1>
+        <form action="{% url 'produto:update_produto' pk %}" method="POST">
+            {% csrf_token %}
+            <div class="field">
+                <label class="label" for="{{ form.produto.id_for_label }}">Produto</label>
+                <div class="control">
+                    <input class="input" type="text" name="produto" id="{{ form.produto.id_for_label }}" value="{{ form.produto.value|default:'' }}" required>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label" for="{{ form.cor.id_for_label }}">Cor</label>
+                <div class="control">
+                    <div class="select">
+                        {{ form.cor }}
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label" for="{{ form.descricao.id_for_label }}">Descrição</label>
+                <div class="control">
+                    <textarea class="textarea" name="descricao" id="{{ form.descricao.id_for_label }}" required>{{ form.descricao.value|default:'' }}</textarea>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <button class="button is-primary" type="submit">Atualizar</button>
+                </div>
+            </div>
+        </form>
+        <a class="button is-light" href="{% url 'produto:list_produto' %}">Voltar</a>
+    </div>
+</section>
 {% endblock %}

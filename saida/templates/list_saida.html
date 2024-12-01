@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block product %}
+<section class="section">
+    <div class="container">
+        <h1 class="title">Lista de Saídas</h1>
+        <a class="button is-primary" href="{% url 'saida:new_saida' %}">Nova Saída</a>
+        <table class="table is-striped is-fullwidth">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Preço</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for saida in saidas %}
+                <tr>
+                    <td>{{ saida.produto }}</td>
+                    <td>{{ saida.quantidade }}</td>
+                    <td>{{ saida.preco }}</td>
+                    <td>
+                        <a class="button is-warning" href="{% url 'saida:update_saida' saida.pk %}">Editar</a>
+                        <form action="{% url 'saida:delete_saida' saida.pk %}" method="POST" style="display:inline;">
+                            {% csrf_token %}
+                            <button class="button is-danger" type="submit">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">Nenhuma saída encontrada.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

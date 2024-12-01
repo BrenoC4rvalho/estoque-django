@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block product %}
+<section class="section">
+    <div class="container">
+        <h1 class="title">Editar Saída</h1>
+        <form action="{% url 'saida:update_saida' pk %}" method="POST">
+            {% csrf_token %}
+            <div class="field">
+                <label class="label" for="{{ form.produto.id_for_label }}">Produto</label>
+                <div class="control">
+                    <div class="select">
+                        {{ form.produto }}
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label" for="{{ form.quantidade.id_for_label }}">Quantidade</label>
+                <div class="control">
+                    <input class="input" type="number" name="quantidade" id="{{ form.quantidade.id_for_label }}" value="{{ form.quantidade.value|default:'' }}" required>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label" for="{{ form.preco.id_for_label }}">Preço</label>
+                <div class="control">
+                    <input class="input" type="number" step="0.01" name="preco" id="{{ form.preco.id_for_label }}" value="{{ form.preco.value|default:'' }}" required>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <button class="button is-primary" type="submit">Atualizar Saída</button>
+                </div>
+            </div>
+        </form>
+        <a class="button is-light" href="{% url 'saida:list_saida' %}">Voltar</a>
+    </div>
+</section>
+{% endblock %}

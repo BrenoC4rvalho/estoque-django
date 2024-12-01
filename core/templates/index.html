@@ -1,17 +1,60 @@
 {% extends 'base.html' %}
 {% block product %}
-    <h1>Aplicação estoqueWeb</h1>
-    <p>{{ mensagem }}</p>
-    <p>Praesent sapien massa, convallis a pellentesque nec,
-    egestas non nisi. Praesent sapien massa, convallis a
-    pellentesque nec, egestas non nisi. Sed porttitor lectus nibh.
-    Vivamus magna justo, lacinia eget consectetur sed, convallis
-    at tellus. Proin eget to rtor risus. Vivamus suscipit tortor
-    eget felis porttitor volutpat. Nulla porttitor accumsan
-    tincidunt. Nulla porttitor accumsan tincidunt. Vestibulum ante
-    ipsum primis in faucibus orci luctus et ultrices posuere
-    cubilia Curae; Donec velit neque, auctor sit ametaliquam vel,
-    ullamcorper sit amet ligula. Praesent sapien massa, convallis
-    a pellentesque nec, egestas non nisi.</p>
-    
+<section class="hero is-primary is-fullheight">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">Bem-vindo ao Sistema de Estoque</h1>
+            <h2 class="subtitle">Gerencie seu estoque de forma eficiente e fácil!</h2>
+            <a class="button is-light is-large" href="{% url 'produto:list_produto' %}">Comece Agora</a>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="title has-text-centered">Funcionalidades</h2>
+        <div class="columns">
+            <div class="column is-one-third">
+                <div class="box">
+                    <h3 class="subtitle">Gerenciamento de Produtos</h3>
+                    <p>Adicione, edite e exclua produtos do seu estoque com facilidade.</p>
+                </div>
+            </div>
+            <div class="column is-one-third">
+                <div class="box">
+                    <h3 class="subtitle">Registro de Entradas e Saídas</h3>
+                    <p>Controle as entradas e saídas de produtos, mantendo sempre o estoque atualizado.</p>
+                </div>
+            </div>
+            <div class="column is-one-third">
+                <div class="box">
+                    <h3 class="subtitle">Relatórios e Análises</h3>
+                    <p>Gere relatórios detalhados sobre seu estoque e analise seu desempenho.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="title has-text-centered">Por que escolher nosso sistema?</h2>
+        <div class="content">
+            <ul>
+                <li>Interface amigável e intuitiva</li>
+                <li>Suporte a múltiplos usuários</li>
+                <li>Relatórios personalizáveis</li>
+                <li>Segurança e confiabilidade</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="section has-text-centered">
+    <div class="container">
+        <h2 class="title">Pronto para começar?</h2>
+        <a class="button is-primary is-large" href="{% url 'produto:list_produto' %}">Experimente Agora</a>
+    </div>
+</section>    
+
 {% endblock %}
