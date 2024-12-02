@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block product %}
+<section class="section">
+    <div class="container">
+        <h1 class="title">Nova Cor</h1>
+        <form action="{% url 'produto:new_cor' %}" method="POST">
+            {% csrf_token %}
+            <div class="field">
+                <label class="label" for="{{ form.cor.id_for_label }}">Nome da Cor</label>
+                <div class="control">
+                    <input class="input" type="text" name="cor" id="{{ form.cor.id_for_label }}" value="{{ form.cor.value|default:'' }}" required>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <button class="button is-primary" type="submit">Salvar</button>
+                </div>
+            </div>
+            <a class="button is-light" href="{% url 'produto:list_produto' %}">Voltar</a>
+        </form>
+    </div>
+</section>
+{% endblock %}

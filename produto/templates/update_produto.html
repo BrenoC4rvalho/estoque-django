@@ -26,13 +26,15 @@
                     <textarea class="textarea" name="descricao" id="{{ form.descricao.id_for_label }}" required>{{ form.descricao.value|default:'' }}</textarea>
                 </div>
             </div>
-            <div class="field">
-                <div class="control">
-                    <button class="button is-primary" type="submit">Atualizar</button>
+            <div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary" type="submit">Atualizar</button>
+                    </div>
                 </div>
+                <a class="button is-light" href="{% url 'produto:list_produto' %}">Voltar</a>
             </div>
         </form>
-        <a class="button is-light" href="{% url 'produto:list_produto' %}">Voltar</a>
     </div>
 </section>
 {% endblock %}

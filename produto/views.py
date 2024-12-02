@@ -1,3 +1,6 @@
+from .models import Cores
+from .forms import CorForm
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from .models import Produtos
 from .forms import ProdutoForm
@@ -9,6 +12,21 @@ def list_produto(request):
     'produtos': produtos,
     }
     
+    return render(request, template_name, context)
+
+
+def new_cor(request):
+    if request.method == 'POST':
+        form = CorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Cor criada com sucesso!')
+            return redirect('produto:list_produto')  # Altere para o destino apropriado
+    else:
+        form = CorForm()
+    
+    template_name = 'new_cor.html'
+    context = {'form': form}
     return render(request, template_name, context)
 
 def new_produto(request):
